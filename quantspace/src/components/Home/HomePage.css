@@ -45,7 +45,7 @@
 }
 
 /* Differentiating the sections with dotted borders */
-.project-management, .change-management {
+.project-management, .change-management, .administrator{
   border: 2px dotted #ccc;
   padding: 20px;
   border-radius: 8px;
