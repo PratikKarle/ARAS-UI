@@ -9,6 +9,9 @@ const config = {
         { headerName: "Created On", field: "created_on" },
     ],
     ItemType : [
+        { headerName: "Name", field: "name" },
+        { headerName: "Singular Label", field: "label" },
+        { headerName: "Plural Label", field: "label_plural" },
         { headerName: "Allow Private Permissions", field: "allow_private_permission" },
         { headerName: "Core", field: "core" },
         { headerName: "Description", field: "description" },
@@ -18,10 +21,7 @@ const config = {
         { headerName: "Dependent", field: "is_dependent" },
         { headerName: "Relationship", field: "is_relationship" },
         { headerName: "Versionable", field: "is_versionable" },
-        { headerName: "Singular Label", field: "label" },
-        { headerName: "Plural Label", field: "label_plural" },
         { headerName: "MaxRecords", field: "maxrecords" },
-        { headerName: "Name", field: "name" },
         { headerName: "Use Src Access", field: "use_src_access" },
       ],
       

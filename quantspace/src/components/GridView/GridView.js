@@ -37,7 +37,6 @@ export const Grid = () => {
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
   const { itemType } = useParams();
-  const [gridApi, setGridApi] = useState(null);
 
   // Fetch data on component mount
   const fetchData = async () => {
@@ -73,7 +72,8 @@ export const Grid = () => {
       const result = await response.json();
       if (result.value && result.value.length > 0) {
         const keys = Object.keys(result.value[0]); // Extract keys from the first object
-        const dynamicColumns = keys.map((key) => ({
+        const dynamicColumns = keys
+        .filter((key) => key !== '@odata.id').map((key) => ({
           headerName: key.charAt(0).toUpperCase() + key.slice(1), // Capitalize header name
           field: key,
           flex: 1,
