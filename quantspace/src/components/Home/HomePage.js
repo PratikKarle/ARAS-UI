@@ -26,38 +26,38 @@ const SplashScreen = () => {
           <h2 className="section-header">Administrator</h2>
           <div className="scroll-container">
             <div className="card" onClick={() => toggleCard("projects")}>
-              <h2>Projects</h2>
-              <img src="./assets/Project.svg" alt="Projects Icon" className="card-icon" />
-              <div className="hover-message">Manage all your projects here.</div>
+              <h2>ItemTypes</h2>
+              <img src="./assets/ItemType.svg" alt="ItemType Icon" className="card-icon" />
+              <div className="hover-message">Get All ItemTypes.</div>
               <div className="card-buttons">
-                <button className="left-button">➕</button>
+                <button className="left-button">✚</button>
                 <button className="right-button">🔍</button>
               </div>
             </div>
             <div className="card" onClick={() => toggleCard("template")}>
-              <h2>Templates</h2>
-              <img src="./assets/ProjectTemplate.svg" alt="Template Icon" className="card-icon" />
-              <div className="hover-message">Create and manage Project templates.</div>
+              <h2>LifeCycles</h2>
+              <img src="./assets/LifeCycleMap.svg" alt="Lifecycle Icon" className="card-icon" />
+              <div className="hover-message">Create and manage Lifecycles.</div>
               <div className="card-buttons">
-                <button className="left-button">➕</button>
+                <button className="left-button">✚</button>
                 <button className="right-button">🔍</button>
               </div>
             </div>
             <div className="card" onClick={() => toggleCard("demand")}>
-              <h2>Demand</h2>
-              <img src="./assets/demand-icon.svg" alt="Demand Icon" className="card-icon" />
-              <div className="hover-message">Manage project demands.</div>
+              <h2>User</h2>
+              <img src="./assets/User.svg" alt="Demand Icon" className="card-icon" />
+              <div className="hover-message">Manage Users.</div>
               <div className="card-buttons">
-                <button className="left-button">➕</button>
+                <button className="left-button">✚</button>
                 <button className="right-button">🔍</button>
               </div>
             </div>
             <div className="card" onClick={() => toggleCard("pb")}>
-              <h2>PB</h2>
-              <img src="./assets/pb-icon.svg" alt="PB Icon" className="card-icon" />
-              <div className="hover-message">Manage product backlog items.</div>
+              <h2>Identity</h2>
+              <img src="./assets/Identity.svg" alt="PB Icon" className="card-icon" />
+              <div className="hover-message">Manage Identities.</div>
               <div className="card-buttons">
-                <button className="left-button">➕</button>
+                <button className="left-button">✚</button>
                 <button className="right-button">🔍</button>
               </div>
             </div>
@@ -73,7 +73,7 @@ const SplashScreen = () => {
               <img src="./assets/Project.svg" alt="Projects Icon" className="card-icon" />
               <div className="hover-message">Manage all your projects here.</div>
               <div className="card-buttons">
-                <button className="left-button">➕</button>
+                <button className="left-button">✚</button>
                 <button className="right-button">🔍</button>
               </div>
             </div>
@@ -82,25 +82,25 @@ const SplashScreen = () => {
               <img src="./assets/ProjectTemplate.svg" alt="Template Icon" className="card-icon" />
               <div className="hover-message">Create and manage Project templates.</div>
               <div className="card-buttons">
-                <button className="left-button">➕</button>
+                <button className="left-button">✚</button>
                 <button className="right-button">🔍</button>
               </div>
             </div>
             <div className="card" onClick={() => toggleCard("demand")}>
               <h2>Demand</h2>
-              <img src="./assets/demand-icon.svg" alt="Demand Icon" className="card-icon" />
+              <img src="./assets/Demand.svg" alt="Demand Icon" className="card-icon" />
               <div className="hover-message">Manage project demands.</div>
               <div className="card-buttons">
-                <button className="left-button">➕</button>
+                <button className="left-button">✚</button>
                 <button className="right-button">🔍</button>
               </div>
             </div>
             <div className="card" onClick={() => toggleCard("pb")}>
               <h2>PB</h2>
-              <img src="./assets/pb-icon.svg" alt="PB Icon" className="card-icon" />
+              <img src="./assets/ProductBrief.svg" alt="PB Icon" className="card-icon" />
               <div className="hover-message">Manage product backlog items.</div>
               <div className="card-buttons">
-                <button className="left-button">➕</button>
+                <button className="left-button">✚</button>
                 <button className="right-button">🔍</button>
               </div>
             </div>
@@ -116,7 +116,7 @@ const SplashScreen = () => {
               <img src="./assets/ExpressECO.svg" alt="ECO Icon" className="card-icon" />
               <div className="hover-message">Manage Engineering Change Orders.</div>
               <div className="card-buttons">
-                <button className="left-button">➕</button>
+                <button className="left-button">✚</button>
                 <button className="right-button">🔍</button>
               </div>
             </div>
@@ -125,7 +125,7 @@ const SplashScreen = () => {
               <img src="./assets/ECN.svg" alt="ECN Icon" className="card-icon" />
               <div className="hover-message">Manage Engineering Change Notices.</div>
               <div className="card-buttons">
-                <button className="left-button">➕</button>
+                <button className="left-button">✚</button>
                 <button className="right-button">🔍</button>
               </div>
             </div>
@@ -134,7 +134,7 @@ const SplashScreen = () => {
               <img src="./assets/ExpressDCO.svg" alt="DCO Icon" className="card-icon" />
               <div className="hover-message">Manage Design Change Orders.</div>
               <div className="card-buttons">
-                <button className="left-button">➕</button>
+                <button className="left-button">✚</button>
                 <button className="right-button">🔍</button>
               </div>
             </div>
@@ -143,7 +143,7 @@ const SplashScreen = () => {
               <img src="./assets/Product.svg" alt="PECO Icon" className="card-icon" />
               <div className="hover-message">Manage Product Engineering Change Orders.</div>
               <div className="card-buttons">
-                <button className="left-button">➕</button>
+                <button className="left-button">✚</button>
                 <button className="right-button">🔍</button>
               </div>
             </div>

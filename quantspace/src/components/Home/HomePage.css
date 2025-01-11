@@ -99,7 +99,7 @@
   left: 50%;
   transform: translateX(-50%);
   padding: 5px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.3); /* Increased transparency */
   color: white;
   border-radius: 4px;
   font-size: 0.9em;
