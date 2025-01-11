@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import config from "../../../config/config";
 import "./CreateForm.css";
+import Navbar from "../../Navbar/Navbar";
 
 const CreateForm = () => {
   const { itemType } = useParams(); // Extract `itemType` from URL
@@ -44,6 +45,7 @@ const CreateForm = () => {
   };
 
   return (
+    <div><Navbar/>
     <div className="form-container">
       <div className="form-header">
         <h1>Create {itemType}</h1>
@@ -118,6 +120,7 @@ const CreateForm = () => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };
