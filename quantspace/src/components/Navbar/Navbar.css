@@ -1,36 +1,40 @@
-/* Navbar styling */
+/* Header style */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #34495e;
     padding: 10px 20px;
+    background-color: #1f629d; /* Slate Blue */
     color: white;
-  }
-  
-  .navbar-left {
-    /* Your navbar left section content */
-  }
-  
-  .navbar-right {
-    display: flex;
-    align-items: center;
-  }
-  
-  .profile-icon {
+}
+
+.navbar .logo {
+    color: white; /* Default color */
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar .logo:hover {
+    color: #00bcd4; /* Cool Aqua on hover */
+}
+
+.navbar .large-search {
+    padding: 10px;
+    font-size: 1em;
+    width: 50%;
+    border: 1px solid #00bcd4; /* Aqua border */
+    background-color: #f4f7fa; /* Light grey background */
+}
+
+.navbar .profile-icon {
+    font-size: 1.8em;
     cursor: pointer;
-  }
-  
-  .profile-icon svg {
-    fill: white;
-    width: 30px;
-    height: 30px;
-  }
-  
-  .large-search {
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    width: 300px;
+    color: #00bcd4; /* Aqua color for profile icon */
+}
+
+.navbar .profile-icon svg {
+    color: #3498db; /* Change to any color you prefer */
   }
   
