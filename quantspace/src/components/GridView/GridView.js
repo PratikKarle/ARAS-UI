@@ -13,6 +13,13 @@ const defaultColDef = {
   floatingFilter: true,
   resizable: true, // Columns are resizable
   sortable: true,  // Columns are sortable
+  width: 150,
+  minWidth: 150,
+};
+
+const rowSelection = {
+  mode: "multiRow",
+  headerCheckbox: false,
 };
 
 export const Grid = () => {
@@ -47,12 +54,12 @@ export const Grid = () => {
       if (result.value && result.value.length > 0) {
         const keys = Object.keys(result.value[0]);
         const dynamicColumns = keys
-          .filter((key) => key !== '@odata.id')
+        .filter((key) => !key.includes('@') && !key.toLowerCase().includes('odata'))
           .map((key) => ({
             headerName: key.charAt(0).toUpperCase() + key.slice(1),
             field: key,
-            width: 120, // Set a default column width
-            maxWidth: 150, // Ensure columns don't exceed this width
+            // width: 180, // Set a default column width
+            // maxWidth: 200, // Ensure columns don't exceed this width
             flex: 1,
           }));
         setColumnDefs(dynamicColumns);
@@ -97,10 +104,11 @@ export const Grid = () => {
             columnDefs={columnDefs}
             rowData={data}
             defaultColDef={defaultColDef}
-            rowSelection="multiple"
+            rowSelection={rowSelection}
             domLayout="autoHeight"
             pagination={true}
             paginationPageSize={10}
+            paginationPageSizeSelector={[10, 25, 50]}
           />
         </div>
       </div>

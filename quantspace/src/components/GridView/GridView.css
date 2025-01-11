@@ -4,6 +4,7 @@
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    height: 500px; 
   }
   
   /* Ag-grid custom theme */
@@ -40,8 +41,9 @@
   /* Floating filter styling */
   .custom-grid .ag-floating-filter-input {
     height: 24px; /* Adjust input height */
-    font-size: 12px; /* Smaller font size */
+    font-size: 14px; /* Smaller font size */
     padding: 2px; /* Compact padding */
+    width: 120px;
   }
   
   /* Resizable columns */
@@ -52,3 +54,7 @@
     white-space: nowrap; /* Prevent wrapping */
   }
   
+  .custom-grid .ag-row-selected {
+    background-color: inherit !important; /* Reset background for selected rows */
+    color: inherit !important; /* Ensure text color remains unaffected */
+  }
