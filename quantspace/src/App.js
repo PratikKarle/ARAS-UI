@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import SplashScreen from "./components/Home/HomePage";
 import Login from "./components/Form/Loginform";
 import ShimmerUI from "./components/Shimmer";
-
+import Grid from "./components/GridView/GridView";
 // Layout component to use Outlet
 function App() {
   return (
@@ -28,6 +28,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/home",
         element: <SplashScreen />,
+      },
+      {
+        path: "/search",
+        element: (<Suspense fallback={<ShimmerUI/>}><Grid/></Suspense>),
       },
     ],
   },

@@ -1,15 +1,27 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./HomePage.css";
 import Navbar from "../Navbar/Navbar";
+import { useNavigate } from "react-router-dom";
+
 
 const SplashScreen = () => {
   const [expandedCard, setExpandedCard] = useState(null);
+  const navigate = useNavigate();
 
   const toggleCard = (cardId) => {
     setExpandedCard(expandedCard === cardId ? null : cardId);
   };
 
-  return (
+    useEffect(() => {
+      const token = localStorage.getItem('authToken'); // or use cookies/session storage
+      if (!token) {
+        // Redirect to login page if no token is found
+        navigate("/");
+      }
+    },);
+  
+
+  return (    
     <div className="splash-screen">
       <header className="header">
         <div className="logo">QuantSpace</div>
@@ -23,14 +35,14 @@ const SplashScreen = () => {
       <div className="content">
         {/* Administrator Section */}
         <section className="section administrator">
-          <h2 className="section-header">Administrator</h2>
+          <h2 className="section-header">Administration</h2>
           <div className="scroll-container">
             <div className="card" onClick={() => toggleCard("projects")}>
               <h2>ItemTypes</h2>
               <img src="./assets/ItemType.svg" alt="ItemType Icon" className="card-icon" />
               <div className="hover-message">Get All ItemTypes.</div>
               <div className="card-buttons">
-                <button className="left-button">✚</button>
+                <button id='searchIt'className="left-button">✚</button>
                 <button className="right-button">🔍</button>
               </div>
             </div>
