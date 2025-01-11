@@ -5,6 +5,7 @@ import './GridView.css';
 import config from '../../config/config';
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 import Navbar from '../Navbar/Navbar';
+import ShimmerUI from '../Shimmer';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -79,8 +80,7 @@ export const Grid = () => {
   if (loading) {
     return (
       <div className="loading-container">
-        <div className="spinner"></div>
-        <p>Loading data, please wait...</p>
+        (<ShimmerUI/>)
       </div>
     );
   }
