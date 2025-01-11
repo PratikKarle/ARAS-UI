@@ -11,15 +11,7 @@ const SplashScreen = () => {
 
   return (
     <div className="splash-screen">
-      <header className="header">
-        <div className="logo">QuantSpace</div>
-        <input
-          type="text"
-          className="large-search"
-          placeholder="Search for projects, teams, or tasks..."
-        />
-        <div className="profile-icon">👤</div>
-      </header>
+      <Navbar/>
       <div className="content">
         {/* Administrator Section */}
         <section className="section administrator">
