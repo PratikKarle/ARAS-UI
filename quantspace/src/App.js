@@ -6,6 +6,7 @@ import SplashScreen from "./components/Home/HomePage";
 import Login from "./components/Form/Loginform";
 import ShimmerUI from "./components/Shimmer";
 import Grid from "./components/GridView/GridView";
+import CreateForm from "./components/Form/CreateForm/CreateForm";
 // Layout component to use Outlet
 function App() {
   return (
@@ -32,6 +33,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/search/:itemType",
         element: (<Suspense fallback={<ShimmerUI/>}><Grid/></Suspense>),
+      },
+      {
+        path: "/create/:itemType",
+        element: (<Suspense fallback={<ShimmerUI/>}><CreateForm/></Suspense>),
       },
     ],
   },
