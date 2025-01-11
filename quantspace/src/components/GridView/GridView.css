@@ -56,5 +56,5 @@
   
   .custom-grid .ag-row-selected {
     background-color: inherit !important; /* Reset background for selected rows */
-    color: inherit !important; /* Ensure text color remains unaffected */
+    color: inherit !important; /*Ensure text color remains unaffected */
   }
