@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./HomePage.css";
+import Navbar from "../Navbar/Navbar";
 
 const SplashScreen = () => {
   const [expandedCard, setExpandedCard] = useState(null);
@@ -19,7 +20,6 @@ const SplashScreen = () => {
         />
         <div className="profile-icon">👤</div>
       </header>
-
       <div className="content">
         {/* Administrator Section */}
         <section className="section administrator">

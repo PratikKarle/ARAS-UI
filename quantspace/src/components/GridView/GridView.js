@@ -1,9 +1,9 @@
 import React from 'react';
 import { AgGridReact } from 'ag-grid-react';
-// import 'ag-grid-community/dist/styles/ag-grid.css';
-// import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import './GridView.css';
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community'; 
 import { themeBalham,themeQuartz,themeAlpine } from 'ag-grid-community';
+import Navbar from "../Navbar/Navbar";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -12,7 +12,7 @@ const rowSelection = {
   headerCheckbox: false,
 };
 
-const myTheme = themeQuartz.withParams({
+const myTheme = themeAlpine.withParams({
   spacing: 12,
   accentColor: 'red',
 });
@@ -21,12 +21,12 @@ const columnDefs= [
   { headerName: "ID", field: "id",},
   { headerName: "Name", field: "name",}, 
   {headerName: "Email",field: "email",},
-  { headerName: "Body", field: "body" },
+  { headerName: "Body", field: "body" ,flex: 1},
   ]
 const rowData= [
-  { name: "Rahul", age: 19, phoneNumber: 9876543210, birthYear:2001}, 
-  { name: "David", age: 17, phoneNumber: 9827654310,birthYear:2003}, 
-  { name: "Dan", age: 25, phoneNumber: 9765438210,birthYear:1995 }]
+  { name: "Rahul", id: 19, email: 9876543210, body:2001}, 
+  { name: "David", id: 17, email: 9827654310,body:2003}, 
+  { name: "Dan", id: 25, email: 9765438210,body:1995 }]
 
 const defaultColDef={
   filter: "agTextColumnFilter",
@@ -43,9 +43,10 @@ const onGridReady=(params)=>{
 export const Grid=()=>{
  
   return (
-      <div style={{ height: 500 }}>
-        <div style={{height: 50}}></div>
+      <div style={{ height: 500, width: "100%" }} >
+        <Navbar/>
         <AgGridReact
+            className="custom-theme"
             columnDefs={columnDefs}
             // rowData={rowData}
             defaultColDef={defaultColDef}
@@ -60,3 +61,5 @@ export const Grid=()=>{
       </div>
   );
 }
+
+export default Grid;

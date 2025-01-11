@@ -4,6 +4,7 @@ import SplashScreen from "./components/Home/HomePage";
 import Loginform from "./components/Form/Loginform";
 import ItemTypeForm from "./components/Form/ItemTypeForm";
 import LifeCycleForm from "./components/Form/LifeCycleForm";
+import GridView from "./components/GridView/GridView"
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/home" element={<SplashScreen />} />
         <Route path="/itemtypes" element={<ItemTypeForm />} />
         <Route path="/lifecycles" element={<LifeCycleForm />} />
+        <Route path="/grid" element={<GridView />} />
         {/* <Route path="/users" element={<UserForm />} />
         <Route path="/identities" element={<IdentityForm />} /> */}
         {/* Add more routes here as needed */}
