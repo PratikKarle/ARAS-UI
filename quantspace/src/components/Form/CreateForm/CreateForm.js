@@ -5,11 +5,11 @@ import "./CreateForm.css";
 import Navbar from "../../Navbar/Navbar";
 
 const CreateForm = () => {
-  const { itemType } = useParams(); // Extract `itemType` from URL
+  const { itemType } = useParams();
   const [activeTab, setActiveTab] = useState("Details");
   const [formData, setFormData] = useState({});
   const [isAccordionOpen, setIsAccordionOpen] = useState({
-    details: true, // Initially open the Details section
+    details: true,
     files: false,
     documents: false,
   });
