@@ -1,0 +1,54 @@
+/* Grid container */
+.grid-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Ag-grid custom theme */
+  .custom-grid .ag-header {
+    background-color: #343a40; /* Dark background for header */
+    color: #ffffff; /* White text for contrast */
+    font-size: 14px; /* Smaller font for compact appearance */
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 0;
+  }
+  
+  .custom-grid .ag-header-cell {
+    padding: 4px; /* Compact padding */
+    border-right: 1px solid #2c2f33; /* Subtle borders */
+  }
+  
+  .custom-grid .ag-header-cell .ag-floating-filter {
+    margin: 2px 0; /* Compact spacing for filters */
+    font-size: 12px; /* Smaller font size */
+  }
+  
+  /* Row styling */
+  .custom-grid .ag-row {
+    font-size: 13px; /* Compact row font size */
+    padding: 4px 0;
+  }
+  
+  /* Hover effect for rows */
+  .custom-grid .ag-row:hover {
+    background-color: #f1f1f1; /* Light gray hover */
+  }
+  
+  /* Floating filter styling */
+  .custom-grid .ag-floating-filter-input {
+    height: 24px; /* Adjust input height */
+    font-size: 12px; /* Smaller font size */
+    padding: 2px; /* Compact padding */
+  }
+  
+  /* Resizable columns */
+  .custom-grid .ag-cell {
+    max-width: 150px; /* Limit max width */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Truncate text */
+    white-space: nowrap; /* Prevent wrapping */
+  }
+  

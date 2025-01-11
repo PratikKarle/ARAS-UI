@@ -3,130 +3,107 @@ import { useParams } from 'react-router-dom';
 import { AgGridReact } from 'ag-grid-react';
 import './GridView.css';
 import config from '../../config/config';
-import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community'; 
-import { themeAlpine } from 'ag-grid-community';
-import Navbar from "../Navbar/Navbar";
+import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
+import Navbar from '../Navbar/Navbar';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
-const rowSelection = {
-  mode: "multiRow",
-  headerCheckbox: false,
-};
-
-const myTheme = themeAlpine.withParams({
-  spacing: 12,
-  accentColor: 'red',
-});
-
-const columnDefs = [
-  { headerName: "ID", field: "id" },
-  { headerName: "Name", field: "name" },
-  { headerName: "Email", field: "email" },
-  { headerName: "Body", field: "body", flex: 1 },
-];
-
 const defaultColDef = {
-  filter: "agTextColumnFilter",
+  filter: 'agTextColumnFilter',
   floatingFilter: true,
+  resizable: true, // Columns are resizable
+  sortable: true,  // Columns are sortable
 };
 
 export const Grid = () => {
-  const [data, setData] = useState([]); // Use state to store the grid data
-  const [columnDefs, setColumnDefs] = useState([]); // State to store column definitions
-  const [loading, setLoading] = useState(true); // Loading state
-  const [error, setError] = useState(null); // Error state
+  const [data, setData] = useState([]);
+  const [columnDefs, setColumnDefs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { itemType } = useParams();
 
-  // Fetch data on component mount
   const fetchData = async () => {
-    const token = localStorage.getItem("authToken"); // Get token from localStorage (or use cookies/session)
+    const token = localStorage.getItem('authToken');
     const fieldHeaderMap = config[itemType];
- 
     const fieldNames = fieldHeaderMap.map((column) => column.field);
-  
-      // Construct the $select query string with the field names
-      const selectQuery = `$select=${fieldNames.join(',')}`; // Join the field names with commas
-    
-      const urlBase = `http://27.107.8.194:86//Aras28New/server/odata/${itemType}`; // API URL
-      // Construct the full URL with the $select query
-      const url = `${urlBase}?${selectQuery}`;
-      console.log(url)
-
-    // const url = `http://27.107.8.194:86//Aras28New/server/odata/${itemType}`; // API URL
+    const selectQuery = `$select=${fieldNames.join(',')}`;
+    const urlBase = `http://27.107.8.194:86//Aras28New/server/odata/${itemType}`;
+    const url = `${urlBase}?${selectQuery}`;
 
     try {
       const response = await fetch(url, {
-        method: "GET",
+        method: 'GET',
         headers: {
-          "Authorization": `Bearer ${token}`, // Include the token in the Authorization header
-          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
         },
       });
 
-      // Handle response status
       if (!response.ok) {
-        throw new Error("Failed to fetch data");
+        throw new Error('Failed to fetch data');
       }
 
       const result = await response.json();
       if (result.value && result.value.length > 0) {
-        const keys = Object.keys(result.value[0]); // Extract keys from the first object
+        const keys = Object.keys(result.value[0]);
         const dynamicColumns = keys
-        .filter((key) => key !== '@odata.id').map((key) => ({
-          headerName: key.charAt(0).toUpperCase() + key.slice(1), // Capitalize header name
-          field: key,
-          flex: 1,
-        }));
-        setColumnDefs(dynamicColumns); // Set dynamic column definitions
+          .filter((key) => key !== '@odata.id')
+          .map((key) => ({
+            headerName: key.charAt(0).toUpperCase() + key.slice(1),
+            field: key,
+            width: 120, // Set a default column width
+            maxWidth: 150, // Ensure columns don't exceed this width
+            flex: 1,
+          }));
+        setColumnDefs(dynamicColumns);
       }
-      setData(result.value); // assuming response has a 'value' key with the array of data
-      setLoading(false); // Data fetched, set loading to false
+      setData(result.value);
+      setLoading(false);
     } catch (err) {
-      setError(err.message); // Set error state
-      setLoading(false); // Set loading to false on error
+      setError(err.message);
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchData();
-  }, [itemType]);// Empty dependency array to call fetchData once on component mount
-  console.log(data);
+  }, [itemType]);
 
- const onGridReady = (params) => {
-};
-  // Display loading or error states
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="loading-container">
+        <div className="spinner"></div>
+        <p>Loading data, please wait...</p>
+      </div>
+    );
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return (
+      <div className="error-container">
+        <p>Error: {error}</p>
+      </div>
+    );
   }
 
   return (
-    <div style={{ width: "100%", margin: "0 auto" }}>
+    <div className="grid-page">
       <Navbar />
-      <div
-        style={{
-          width: "100%",
-          height: "100%", // Enable horizontal scrolling for wide tables
-        }}
-      >
-      <AgGridReact
-        className="custom-theme"
-        columnDefs={columnDefs}
-        rowData={data} // Bind the fetched data to the grid
-        defaultColDef={defaultColDef}
-        rowSelection={rowSelection}
-        onGridReady={onGridReady} 
-        domLayout="autoHeight" 
-        pagination={true}
-        paginationPageSize={10}
-        paginationPageSizeSelector={[10, 25, 50]}
-        theme={myTheme}
-      />
-    </div>
+      <div className="grid-container">
+        <h1>{itemType} Data</h1>
+        <div className="ag-grid-wrapper">
+          <AgGridReact
+            className="custom-grid"
+            columnDefs={columnDefs}
+            rowData={data}
+            defaultColDef={defaultColDef}
+            rowSelection="multiple"
+            domLayout="autoHeight"
+            pagination={true}
+            paginationPageSize={10}
+          />
+        </div>
+      </div>
     </div>
   );
 };
