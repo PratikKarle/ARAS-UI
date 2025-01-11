@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { AgGridReact } from 'ag-grid-react';
 import './GridView.css';
+import config from '../../config/config';
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community'; 
 import { themeAlpine } from 'ag-grid-community';
 import Navbar from "../Navbar/Navbar";
@@ -41,7 +42,19 @@ export const Grid = () => {
   // Fetch data on component mount
   const fetchData = async () => {
     const token = localStorage.getItem("authToken"); // Get token from localStorage (or use cookies/session)
-    const url = `http://27.107.8.194:86//Aras28New/server/odata/${itemType}`; // API URL
+    const fieldHeaderMap = config[itemType];
+ 
+    const fieldNames = fieldHeaderMap.map((column) => column.field);
+  
+      // Construct the $select query string with the field names
+      const selectQuery = `$select=${fieldNames.join(',')}`; // Join the field names with commas
+    
+      const urlBase = `http://27.107.8.194:86//Aras28New/server/odata/${itemType}`; // API URL
+      // Construct the full URL with the $select query
+      const url = `${urlBase}?${selectQuery}`;
+      console.log(url)
+
+    // const url = `http://27.107.8.194:86//Aras28New/server/odata/${itemType}`; // API URL
 
     try {
       const response = await fetch(url, {
