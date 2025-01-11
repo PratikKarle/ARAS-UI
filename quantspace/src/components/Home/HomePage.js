@@ -8,8 +8,8 @@ const SplashScreen = () => {
   const [expandedCard, setExpandedCard] = useState(null);
   const navigate = useNavigate();
 
-  const handleNavigate = (path) => {
-    navigate(path);
+  const handleNavigate = (itemType) => {
+    navigate(`/search/${itemType}`);
   };
   const toggleCard = (cardId) => {
     setExpandedCard(expandedCard === cardId ? null : cardId);
@@ -37,7 +37,7 @@ const SplashScreen = () => {
               <img src="./assets/ItemType.svg" alt="ItemType Icon" className="card-icon" />
               <div className="card-buttons">
                 <button className="left-button">✚</button>
-                <button className="right-button" onClick={()=>handleNavigate('/search')}>🔍</button>
+                <button className="right-button" onClick={()=>handleNavigate('ItemType')}>🔍</button>
               </div>
             </div>
             <div className="card" onClick={() => toggleCard("template")}>
@@ -45,7 +45,7 @@ const SplashScreen = () => {
               <img src="./assets/LifeCycleMap.svg" alt="Lifecycle Icon" className="card-icon" />
               <div className="card-buttons">
                 <button className="left-button">✚</button>
-                <button className="right-button" onClick={()=>handleNavigate('/search')}>🔍</button>
+                <button className="right-button" onClick={()=>handleNavigate('Life Cycle Map')}>🔍</button>
               </div>
             </div>
             <div className="card" onClick={() => toggleCard("demand")}>
@@ -53,7 +53,7 @@ const SplashScreen = () => {
               <img src="./assets/User.svg" alt="Demand Icon" className="card-icon" />
               <div className="card-buttons">
                 <button className="left-button">✚</button>
-                <button className="right-button" onClick={()=>handleNavigate('/search')}>🔍</button>
+                <button className="right-button" onClick={()=>handleNavigate('User')}>🔍</button>
               </div>
             </div>
             <div className="card" onClick={() => toggleCard("pb")}>
@@ -61,7 +61,7 @@ const SplashScreen = () => {
               <img src="./assets/Identity.svg" alt="PB Icon" className="card-icon" />
               <div className="card-buttons">
                 <button className="left-button">✚</button>
-                <button className="right-button" onClick={()=>handleNavigate('/search')}>🔍</button>
+                <button className="right-button" onClick={()=>handleNavigate('Identity')}>🔍</button>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@ const SplashScreen = () => {
               <img src="./assets/Project.svg" alt="Projects Icon" className="card-icon" />
               <div className="card-buttons">
                 <button className="left-button">✚</button>
-                <button className="right-button" onClick={()=>handleNavigate('/search')}>🔍</button>
+                <button className="right-button" onClick={()=>handleNavigate('Project')}>🔍</button>
               </div>
             </div>
             <div className="card" onClick={() => toggleCard("template")}>
@@ -84,7 +84,7 @@ const SplashScreen = () => {
               <img src="./assets/ProjectTemplate.svg" alt="Template Icon" className="card-icon" />
               <div className="card-buttons">
                 <button className="left-button">✚</button>
-                <button className="right-button" onClick={()=>handleNavigate('/search')}>🔍</button>
+                <button className="right-button" onClick={()=>handleNavigate('Project Template')}>🔍</button>
               </div>
             </div>
             <div className="card" onClick={() => toggleCard("demand")}>
@@ -115,7 +115,7 @@ const SplashScreen = () => {
               <img src="./assets/ExpressECO.svg" alt="ECO Icon" className="card-icon" />
               <div className="card-buttons">
                 <button className="left-button">✚</button>
-                <button className="right-button" onClick={()=>handleNavigate('/search')}>🔍</button>
+                <button className="right-button" onClick={()=>handleNavigate('Express ECO')}>🔍</button>
               </div>
             </div>
             <div className="card" onClick={() => toggleCard("ecn")}>
@@ -123,7 +123,7 @@ const SplashScreen = () => {
               <img src="./assets/ECN.svg" alt="ECN Icon" className="card-icon" />
               <div className="card-buttons">
                 <button className="left-button">✚</button>
-                <button className="right-button" onClick={()=>handleNavigate('/search')}>🔍</button>
+                <button className="right-button" onClick={()=>handleNavigate('ECN')}>🔍</button>
               </div>
             </div>
             <div className="card" onClick={() => toggleCard("dco")}>
@@ -131,7 +131,7 @@ const SplashScreen = () => {
               <img src="./assets/ExpressDCO.svg" alt="DCO Icon" className="card-icon" />
               <div className="card-buttons">
                 <button className="left-button">✚</button>
-                <button className="right-button" onClick={()=>handleNavigate('/search')}>🔍</button>
+                <button className="right-button" onClick={()=>handleNavigate('Express DCO')}>🔍</button>
               </div>
             </div>
             <div className="card" onClick={() => toggleCard("peco")}>

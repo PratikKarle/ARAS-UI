@@ -30,7 +30,7 @@ const appRouter = createBrowserRouter([
         element: <SplashScreen />,
       },
       {
-        path: "/search",
+        path: "/search/:itemType",
         element: (<Suspense fallback={<ShimmerUI/>}><Grid/></Suspense>),
       },
     ],
