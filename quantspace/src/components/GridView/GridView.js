@@ -87,7 +87,7 @@ console.log(data);
   }
 
   return (
-    <div style={{ height: 500, width: "100%" }}>
+    <div style={{ height: 647, width: "100%" }}>
       <Navbar />
       <AgGridReact
         className="custom-theme"
