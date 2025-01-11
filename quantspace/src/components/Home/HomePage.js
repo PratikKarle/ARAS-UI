@@ -67,6 +67,37 @@ const SplashScreen = () => {
           </div>
         </section>
 
+        {/* My Innovator Section */}
+        <section className="section administrator">
+          <h2 className="section-header">My Innovator</h2>
+          <div className="scroll-container">
+            <div className="card" onClick={() => toggleCard("projects")}>
+              <h2>My InBasket</h2>
+              <img src="./assets/InBasketTask.svg" alt="My InBasket Icon" className="card-icon" />
+              <div className="card-buttons">
+                <button className="left-button">✚</button>
+                <button className="right-button" onClick={()=>handleNavigate('InBasket Task')}>🔍</button>
+              </div>
+            </div>
+            <div className="card" onClick={() => toggleCard("template")}>
+              <h2>Dashboard</h2>
+              <img src="./assets/Dashboard.svg" alt="Dashboard Icon" className="card-icon" />
+              <div className="card-buttons">
+                <button className="left-button">✚</button>
+                <button className="right-button" onClick={()=>handleNavigate('cui_Dashboard')}>🔍</button>
+              </div>
+            </div>
+            <div className="card" onClick={() => toggleCard("template")}>
+              <h2>XPropertySearch</h2>
+              <img src="./assets/ExtendedPropertySearch.svg" alt="ExtendedPropertySearch Icon" className="card-icon" />
+              <div className="card-buttons">
+                <button className="left-button">✚</button>
+                <button className="right-button" onClick={()=>handleNavigate('xPropertyContainerItem')}>🔍</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Project Management Section */}
         <section className="section project-management">
           <h2 className="section-header">Project Management</h2>
