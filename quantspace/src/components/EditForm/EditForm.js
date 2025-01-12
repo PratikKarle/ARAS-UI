@@ -29,33 +29,42 @@ const EditForm = () => {
   const handleDoneClick = async () => {
     try {
       const token = localStorage.getItem("authToken");
-      const url = `http://27.107.8.194:86//Aras28New/server/odata/${itemType}('${formData.id}')`;
-
-      // Save the updated data to the server
+      const odataId = formData["@odata.id"];
+  
+      if (!odataId) throw new Error("Missing @odata.id in formData.");
+  
+      const url = `http://27.107.8.194:86//Aras28New/server/odata/${odataId}`;
+      const payload = Object.fromEntries(
+        Object.entries(formData).filter(([key]) => !key.startsWith("@"))
+      );
+  
+      console.log("Final URL:", url);
+      console.log("Payload being sent:", JSON.stringify(payload, null, 2));
+  
       const response = await fetch(url, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
+          Prefer: "return=minimal",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
-
+  
       if (!response.ok) {
-        throw new Error("Failed to save data");
+        const errorResponse = await response.text();
+        console.error("Error Response:", errorResponse);
+        throw new Error(`Failed to save data: ${response.status}`);
       }
-
+  
       alert("Data saved successfully!");
-
-      // Disable editing
       setIsEditable(false);
-
-      // Update the search grid data
-      navigate(`/grid/${itemType}`, { state: { updatedData: formData } });
     } catch (error) {
+      console.error("Error saving data:", error);
       alert(`Error saving data: ${error.message}`);
     }
   };
+  
 
   const renderFields = () => {
     // Dynamically render form fields based on formData keys
