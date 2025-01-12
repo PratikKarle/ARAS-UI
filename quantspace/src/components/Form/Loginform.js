@@ -74,6 +74,7 @@ const Login = () => {
           var token_obj = getJSON(token_res);
           var token = token_obj.access_token;
           localStorage.setItem("authToken",token);
+          localStorage.setItem("username",username);
           setShowShimmer(true);
         } catch (err) {
         // alert("Wrong UserName or Password! Please try again.");

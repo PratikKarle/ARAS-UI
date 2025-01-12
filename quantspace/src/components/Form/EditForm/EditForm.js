@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../../Navbar/Navbar";
 import "./EditForm.css";
-import LifeCycleMap from "../LifeCycle/LifeCycleMap";
+import LifeCycleMap from "../../LifeCycle/LifeCycleMap";
+import BOM from "../../StructureGrid/BOMGrid";
 
 const EditForm = () => {
   const { itemType } = useParams(); // Dynamically get itemType from the route
@@ -155,6 +156,27 @@ const EditForm = () => {
           </div>
 
           {renderLifeCycleMap()}
+	  {/* Conditionally render BOM if itemType is 'Part' */}
+          {itemType === "Part" && formData["@odata.id"] && (
+            <div
+              className={`accordion ${openAccordion === "bom" ? "open" : ""}`}
+            >
+              <div
+                className="accordion-header"
+                onClick={() => handleAccordionToggle("bom")}
+              >
+                <h2>BOM</h2>
+                <button className="accordion-toggle-button">
+                  {openAccordion === "bom" ? "▲" : "▼"}
+                </button>
+              </div>
+              {openAccordion === "bom" && (
+                <div className="accordion-content bom-section">
+                  <BOM partId={formData["@odata.id"]} itemType={"Part"} /> {/* Pass ID from formData to BOM */}
+                </div>
+              )}
+            </div>
+          )}
 
           <div className="submit-section">
             {!isEditable ? (

@@ -7,7 +7,8 @@ import Login from "./components/Form/Loginform";
 import ShimmerUI from "./components/Shimmer";
 import Grid from "./components/GridView/GridView";
 import CreateForm from "./components/Form/CreateForm/CreateForm";
-import EditForm from "./components/EditForm/EditForm";
+import EditForm from "./components/Form/EditForm/EditForm";
+import InBasket from "./components/InBasket/InBasket";
 
 // Layout component to use Outlet
 function App() {
@@ -43,6 +44,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/:itemType",
         element: (<Suspense fallback={<ShimmerUI/>}><EditForm/></Suspense>),
+      },
+      {
+        path: "/InBasket",
+        element: (<Suspense fallback={<ShimmerUI/>}><InBasket/></Suspense>),
       },
     ],
   },

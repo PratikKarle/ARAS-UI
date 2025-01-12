@@ -66,6 +66,18 @@ const config = {
         { headerName: "Scheduled Start", field: "date_start_sched" },
         { headerName: "Scheduled Due", field: "date_due_sched" },
     ],
+    InBasketTask: [
+        { headerName: "Assigned To", field: "assigned_to" },
+        { headerName: "Source Item", field: "container" },
+        { headerName: "Due Date", field: "due_date" },
+        { headerName: "Instructions", field: "instructions" },
+        { headerName: "Work Item", field: "item" },
+        { headerName: "Type", field: "itemtype" },
+        { headerName: "My Assignment", field: "my_assignment" },
+        { headerName: "Activity", field: "name" },
+        { headerName: "Start Date", field: "start_date" },
+        { headerName: "Status", field: "status" },
+    ],
   };
   
   export default config;

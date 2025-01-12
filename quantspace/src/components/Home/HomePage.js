@@ -11,6 +11,9 @@ const SplashScreen = () => {
   const handleNavigate = (itemType) => {
     navigate(`/search/${itemType}`);
   };
+  const handleInBasket = () => {
+    navigate(`/InBasket`);
+  };
   const handleCreateForm = (itemType) => {
     navigate(`/create/${itemType}`);
   };
@@ -79,8 +82,7 @@ const SplashScreen = () => {
               <h2>My InBasket</h2>
               <img src="./assets/InBasketTask.svg" alt="My InBasket Icon" className="card-icon" />
               <div className="card-buttons">
-                <button className="left-button" onClick={() => handleCreateForm("InBasket Task")}>✚</button>
-                <button className="right-button" onClick={()=>handleNavigate('InBasket Task')}>🔍</button>
+                <button className="right-button" onClick={()=>handleInBasket()}>🔍</button>
               </div>
             </div>
             <div className="card" onClick={() => toggleCard("template")}>
