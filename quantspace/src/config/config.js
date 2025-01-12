@@ -1,6 +1,6 @@
 const config = {
     token_url: "http://27.107.8.194:86/Aras28New/",
-    ECN: [
+    "ECN": [
         { headerName: "ECN Number", field: "item_number" },
         { headerName: "Title", field: "title" },
         { headerName: "Priority", field: "priority" },
@@ -8,7 +8,21 @@ const config = {
         { headerName: "Release Date", field: "release_date" },
         { headerName: "Created On", field: "created_on" },
     ],
-    ItemType : [
+    "Express ECO": [
+        { headerName: "Item Number", field: "item_number" },
+        { headerName: "Title", field: "title" },
+        { headerName: "Description", field: "description" },
+        { headerName: "State", field: "state" },
+        { headerName: "Change Reason", field: "change_reason" },
+    ],
+    "Express DCO": [
+        { headerName: "Item Number", field: "item_number" },
+        { headerName: "Title", field: "title" },
+        { headerName: "Description", field: "description" },
+        { headerName: "State", field: "state" },
+        { headerName: "Change Reason", field: "change_reason" },
+    ],
+    "ItemType" : [
         { headerName: "Name", field: "name" },
         { headerName: "Singular Label", field: "label" },
         { headerName: "Plural Label", field: "label_plural" },
@@ -23,20 +37,35 @@ const config = {
         { headerName: "Versionable", field: "is_versionable" },
         { headerName: "MaxRecords", field: "maxrecords" },
         { headerName: "Use Src Access", field: "use_src_access" },
-      ],
-      Part : [
+    ],
+    "Life Cycle Map": [
         { headerName: "Name", field: "name" },
-        { headerName: "Singular Label", field: "label" },
-        { headerName: "Plural Label", field: "label_plural" },
-        { headerName: "Allow Private Permissions", field: "allow_private_permission" },
-        { headerName: "Item Number", field: "item_number" },
         { headerName: "Description", field: "description" },
-        { headerName: "Current State", field: "current_state" },
-        { headerName: "Relationship", field: "is_relationship" },
-        { headerName: "Versionable", field: "is_versionable" },
-        { headerName: "MaxRecords", field: "maxrecords" },
-      ],  
-      
+    ],
+    "User": [
+        { headerName: "Login Name", field: "login_name" },
+        { headerName: "First Name", field: "first_name" },
+        { headerName: "Last Name", field: "last_name" },
+    ],
+    "Part": [
+        { headerName: "Item Number", field: "item_number" },
+        { headerName: "Name", field: "name" },
+        { headerName: "Description", field: "description" },
+        { headerName: "State", field: "state" },
+        { headerName: "Classification", field: "classification" },
+    ],
+    "Product": [
+        { headerName: "Item Number", field: "item_number" },
+        { headerName: "Name", field: "name" },
+        { headerName: "Description", field: "description" },
+        { headerName: "State", field: "current_state" },
+    ],
+    "Project": [
+        { headerName: "Project Number", field: "project_number" },
+        { headerName: "Name", field: "name" },
+        { headerName: "Scheduled Start", field: "date_start_sched" },
+        { headerName: "Scheduled Due", field: "date_due_sched" },
+    ],
   };
   
   export default config;
