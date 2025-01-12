@@ -1,0 +1,28 @@
+.bom-container {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .bom-row {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .bom-row:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .toggle-icon {
+    margin-right: 10px;
+    font-weight: bold;
+    width: 20px;
+    text-align: center;
+  }
+  
