@@ -39,7 +39,7 @@ const EditForm = () => {
       const [_, itemtype, id] = match;
   
       // Construct the URL for the PATCH request
-      const url = `http://27.107.8.194:86/Aras28New/server/odata/${itemtype}?$filter=id eq '${id}'`;
+      const url = `/Aras28New/server/odata/${itemtype}('${id}')`;
   
       // Prepare the payload by filtering out keys starting with "@"
       const payload = Object.fromEntries(

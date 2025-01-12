@@ -1,6 +1,7 @@
 {
   "name": "quantspace",
   "version": "0.1.0",
+  "proxy": "http://27.107.8.194:86",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^5.5.2",

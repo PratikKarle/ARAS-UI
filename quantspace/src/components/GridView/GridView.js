@@ -41,7 +41,7 @@ export const Grid = () => {
     const fieldHeaderMap = config[itemType];
     const fieldNames = fieldHeaderMap.map((column) => column.field);
     const selectQuery = `$select=${fieldNames.join(",")}`;
-    const urlBase = `http://27.107.8.194:86//Aras28New/server/odata/${itemType}`;
+    const urlBase = `/Aras28New/server/odata/${itemType}`;
     const url = `${urlBase}?${selectQuery}`;
 
     try {
