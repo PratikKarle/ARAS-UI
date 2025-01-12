@@ -41,7 +41,6 @@ const config = {
     "Life Cycle Map": [
         { headerName: "Name", field: "name" },
         { headerName: "Description", field: "description" },
-        { headerName: "Last Name", field: "last_name" },
     ],
     "User": [
         { headerName: "Login Name", field: "login_name" },

@@ -44,7 +44,7 @@ const SplashScreen = () => {
                 <button className="right-button" onClick={()=>handleNavigate('ItemType')}>🔍</button>
               </div>
             </div>
-            <div className="card" onClick={() => toggleCard("template")}>
+            <div className="card" onClick={() => toggleCard("lifecyclemap")}>
               <h2>LifeCycles</h2>
               <img src="./assets/LifeCycleMap.svg" alt="Lifecycle Icon" className="card-icon" />
               <div className="card-buttons">
