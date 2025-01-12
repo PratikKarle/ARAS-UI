@@ -1,26 +1,25 @@
 import {React, useState} from "react";
 import { Link } from "react-router-dom"; 
 import "./Navbar.css";
+import logo from "../../assets/qs1.png"
 
-const Navbar = ({onSearch}) => {
-    const [searchTerm, setSearchTerm] = useState("");
-
-    const handleSearchChange = (event) => {
-        const value = event.target.value.toLowerCase();
-        setSearchTerm(value);
-        onSearch(value); // Pass the search term to the parent component for filtering
-      };
-
+const Navbar = () => {
       
   return (
     <header className="navbar">
-       <Link to="/home" className="logo">QuantSpace</Link>
+       <Link to="/home" className="logo">
+       <div style={{width: '30px'}}>
+       <img 
+          src={logo} 
+          alt="QuantSpace Logo" 
+          style={{ width: '30px', height: 'auto', display: 'inline-block' }} 
+        />
+        </div>
+      </Link>
       <input
         type="text"
         className="large-search"
         placeholder="Search for projects, teams, or tasks..."
-        value={searchTerm}
-        onChange={handleSearchChange}
       />
       <div className="profile-icon"><svg
         xmlns="http://www.w3.org/2000/svg"

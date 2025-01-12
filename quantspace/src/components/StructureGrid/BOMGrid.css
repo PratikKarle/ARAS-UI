@@ -1,28 +1,47 @@
 .bom-container {
-    font-family: Arial, sans-serif;
-    max-width: 600px;
-    margin: 20px auto;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
+    padding: 8px; /* Reduced padding for a more compact layout */
   }
   
-  .bom-row {
-    cursor: pointer;
-    padding: 5px 10px;
-    border-bottom: 1px solid #f0f0f0;
-    display: flex;
-    align-items: center;
+  .button-container {
+    margin-bottom: 12px; /* Reduced margin between buttons and table */
   }
   
-  .bom-row:hover {
-    background-color: #f9f9f9;
+  .ant-table-row-indent {
+    width: 16px !important; /* Reduced indentation for nested rows */
   }
   
-  .toggle-icon {
-    margin-right: 10px;
-    font-weight: bold;
-    width: 20px;
-    text-align: center;
+  .even-row {
+    background-color: #f5f5f5; /* Light grey background for even rows */
+  }
+  
+  .odd-row {
+    background-color: #ffffff; /* White background for odd rows */
+  }
+  
+  .ant-table-row {
+    transition: background-color 0.3s ease; /* Smooth transition for row hover effect */
+  }
+  
+  .ant-table-row:hover {
+    background-color: #e6f7ff; /* Light blue hover effect */
+  }
+  
+  .ant-btn {
+    font-size: 12px; /* Smaller font size for buttons */
+    padding: 6px 12px; /* More compact padding for buttons */
+  }
+  
+  .ant-table {
+    margin-top: 8px;
+    font-size: 14px; /* Slightly smaller font size for table */
+  }
+  
+  .ant-table-thead > tr > th {
+    background-color: #f0f2f5; /* Light header background */
+    font-weight: 500; /* Slightly bold header font */
+  }
+  
+  .ant-table-tbody > tr > td {
+    padding: 8px 12px; /* Reduced padding for a more compact appearance */
   }
   
