@@ -102,6 +102,29 @@ const SplashScreen = () => {
           </div>
         </section>
 
+        {/* Design Section */}
+        <section className="section administrator">
+          <h2 className="section-header">Design</h2>
+          <div className="scroll-container">
+            <div className="card" onClick={() => toggleCard("part")}>
+              <h2>Part</h2>
+              <img src="./assets/Part.svg" alt="Part Icon" className="card-icon" />
+              <div className="card-buttons">
+                <button className="left-button" onClick={() => handleCreateForm("Part")}>✚</button>
+                <button className="right-button" onClick={()=>handleNavigate('Part')}>🔍</button>
+              </div>
+            </div>
+            <div className="card" onClick={() => toggleCard("product")}>
+              <h2>Products</h2>
+              <img src="./assets/Product.svg" alt="Product Icon" className="card-icon" />
+              <div className="card-buttons">
+                <button className="left-button" onClick={() => handleCreateForm("Product")}>✚</button>
+                <button className="right-button" onClick={()=>handleNavigate('Product')}>🔍</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Change Management Section */}
         <section className="section change-management">
           <h2 className="section-header">Change Management</h2>
