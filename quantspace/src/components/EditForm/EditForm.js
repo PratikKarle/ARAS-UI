@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import "./EditForm.css";
+import LifeCycleMap from "../LifeCycle/LifeCycleMap";
 
 const EditForm = () => {
   const { itemType } = useParams(); // Dynamically get itemType from the route
@@ -9,11 +10,22 @@ const EditForm = () => {
   const [formData, setFormData] = useState({});
   const [isEditable, setIsEditable] = useState(false); // Tracks whether the fields are editable
   const [openAccordion, setOpenAccordion] = useState("details");
+  const [odataInfo, setOdataInfo] = useState(null); // Store dynamic `itemId`
 
   useEffect(() => {
     // If data is passed via state, populate formData
     if (location.state?.data) {
       setFormData(location.state.data);
+
+      // Extract `itemId` from `@odata.id`
+      const odataId = location.state.data["@odata.id"];
+      if (odataId) {
+        const match = odataId.match(/([^/]+)\('([^']+)'\)$/);
+        if (match) {
+          const [_, extractedItemType, itemId] = match;
+          setOdataInfo({ itemType: extractedItemType, itemId });
+        }
+      }
     }
   }, [location.state]);
 
@@ -29,26 +41,21 @@ const EditForm = () => {
     try {
       const token = localStorage.getItem("authToken");
       const odataId = formData["@odata.id"];
-      console.log("Extracted @odata.id:", odataId);
-  
+
       if (!odataId) throw new Error("Missing @odata.id in formData.");
-  
+
       // Extract itemtype and id from the @odata.id
       const match = odataId.match(/([^/]+)\('([^']+)'\)$/);
       if (!match) throw new Error("Invalid @odata.id format.");
       const [_, itemtype, id] = match;
-  
+
       // Construct the URL for the PATCH request
       const url = `/Aras28New/server/odata/${itemtype}('${id}')`;
-  
       // Prepare the payload by filtering out keys starting with "@"
       const payload = Object.fromEntries(
         Object.entries(formData).filter(([key]) => !key.startsWith("@"))
       );
-  
-      console.log("Final URL:", url);
-      console.log("Payload being sent:", JSON.stringify(payload, null, 2));
-  
+
       // Make the PATCH request
       const response = await fetch(url, {
         method: "PATCH",
@@ -59,23 +66,20 @@ const EditForm = () => {
         },
         body: JSON.stringify(payload),
       });
-  
+
       if (!response.ok) {
         const errorResponse = await response.text();
-        console.error("Error Response:", errorResponse);
         throw new Error(`Failed to save data: ${response.status}`);
       }
-  
+
       alert("Data saved successfully!");
       setIsEditable(false);
     } catch (error) {
-      console.error("Error saving data:", error);
       alert(`Error saving data: ${error.message}`);
     }
   };
-  
+
   const renderFields = () => {
-    // Dynamically render form fields based on formData keys
     return Object.keys(formData)
       .filter((key) => !key.includes("@") && !key.toLowerCase().includes("odata"))
       .map((field) => (
@@ -92,10 +96,30 @@ const EditForm = () => {
               setFormData({ ...formData, [field]: e.target.value })
             }
             className="form-input"
-            disabled={!isEditable} // Disable the field if editing is not enabled
+            disabled={!isEditable}
           />
         </div>
       ));
+  };
+
+  const renderLifeCycleMap = () => {
+    if (!odataInfo || !["Life Cycle Map", "Part"].includes(itemType)) {
+      return null;
+    }
+    const lifeCycleItemId = itemType === "Part" ? "E337EBF706FA4172B2CD1A6487E00875" : odataInfo.itemId;
+    return (
+      <div className="lifecycle-map">
+        <h2>Life Cycle Map</h2>
+        <div className="state-section">
+          <LifeCycleMap
+            baseUrl="/Aras28New"
+            itemId={lifeCycleItemId}
+            expandState="Life Cycle State"
+            expandTransition="Life Cycle Transition"
+          />
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -108,9 +132,7 @@ const EditForm = () => {
 
         <div className="form-body">
           <div
-            className={`accordion ${
-              openAccordion === "details" ? "open" : ""
-            }`}
+            className={`accordion ${openAccordion === "details" ? "open" : ""}`}
           >
             <div
               className="accordion-header"
@@ -132,7 +154,8 @@ const EditForm = () => {
             )}
           </div>
 
-          {/* Edit and Done Buttons */}
+          {renderLifeCycleMap()}
+
           <div className="submit-section">
             {!isEditable ? (
               <button
