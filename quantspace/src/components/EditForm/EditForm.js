@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useParams, useNavigate } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import "./EditForm.css";
 
 const EditForm = () => {
   const { itemType } = useParams(); // Dynamically get itemType from the route
   const location = useLocation();
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({});
   const [isEditable, setIsEditable] = useState(false); // Tracks whether the fields are editable
   const [openAccordion, setOpenAccordion] = useState("details");
@@ -30,10 +29,19 @@ const EditForm = () => {
     try {
       const token = localStorage.getItem("authToken");
       const odataId = formData["@odata.id"];
+      console.log("Extracted @odata.id:", odataId);
   
       if (!odataId) throw new Error("Missing @odata.id in formData.");
   
-      const url = `http://27.107.8.194:86//Aras28New/server/odata/${odataId}`;
+      // Extract itemtype and id from the @odata.id
+      const match = odataId.match(/([^/]+)\('([^']+)'\)$/);
+      if (!match) throw new Error("Invalid @odata.id format.");
+      const [_, itemtype, id] = match;
+  
+      // Construct the URL for the PATCH request
+      const url = `http://27.107.8.194:86/Aras28New/server/odata/${itemtype}?$filter=id eq '${id}'`;
+  
+      // Prepare the payload by filtering out keys starting with "@"
       const payload = Object.fromEntries(
         Object.entries(formData).filter(([key]) => !key.startsWith("@"))
       );
@@ -41,6 +49,7 @@ const EditForm = () => {
       console.log("Final URL:", url);
       console.log("Payload being sent:", JSON.stringify(payload, null, 2));
   
+      // Make the PATCH request
       const response = await fetch(url, {
         method: "PATCH",
         headers: {
@@ -65,7 +74,6 @@ const EditForm = () => {
     }
   };
   
-
   const renderFields = () => {
     // Dynamically render form fields based on formData keys
     return Object.keys(formData)

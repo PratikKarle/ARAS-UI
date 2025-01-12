@@ -24,19 +24,13 @@ const config = {
         { headerName: "MaxRecords", field: "maxrecords" },
         { headerName: "Use Src Access", field: "use_src_access" },
       ],
-      Part : [
-        { headerName: "Name", field: "name" },
-        { headerName: "Singular Label", field: "label" },
-        { headerName: "Plural Label", field: "label_plural" },
-        { headerName: "Allow Private Permissions", field: "allow_private_permission" },
+      Part: [
         { headerName: "Item Number", field: "item_number" },
+        { headerName: "Name", field: "name" },
         { headerName: "Description", field: "description" },
-        { headerName: "Current State", field: "current_state" },
-        { headerName: "Relationship", field: "is_relationship" },
-        { headerName: "Versionable", field: "is_versionable" },
-        { headerName: "MaxRecords", field: "maxrecords" },
-      ],  
-      
+        { headerName: "State", field: "state" },
+        { headerName: "Classification", field: "classification" },
+      ],
   };
   
   export default config;
