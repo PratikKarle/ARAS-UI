@@ -38,6 +38,11 @@ const config = {
         { headerName: "MaxRecords", field: "maxrecords" },
         { headerName: "Use Src Access", field: "use_src_access" },
     ],
+    "Life Cycle Map": [
+        { headerName: "Name", field: "name" },
+        { headerName: "Description", field: "description" },
+        { headerName: "Last Name", field: "last_name" },
+    ],
     "User": [
         { headerName: "Login Name", field: "login_name" },
         { headerName: "First Name", field: "first_name" },
