@@ -9,7 +9,7 @@
   
   /* Ag-grid custom theme */
   .custom-grid .ag-header {
-    background-color: #343a40; /* Dark background for header */
+    background-color: #36454F; /* Dark background for header */
     color: #ffffff; /* White text for contrast */
     font-size: 14px; /* Smaller font for compact appearance */
     font-weight: bold;
