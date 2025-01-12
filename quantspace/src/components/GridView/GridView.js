@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { AgGridReact } from 'ag-grid-react';
-import './GridView.css';
-import config from '../../config/config';
-import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
-import Navbar from '../Navbar/Navbar';
-import ShimmerUI from '../Shimmer';
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { AgGridReact } from "ag-grid-react";
+import "./GridView.css";
+import config from "../../config/config";
+import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
+import Navbar from "../Navbar/Navbar";
+import ShimmerUI from "../Shimmer";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 const defaultColDef = {
-  filter: 'agTextColumnFilter',
+  filter: "agTextColumnFilter",
   floatingFilter: true,
-  resizable: true, // Columns are resizable
-  sortable: true,  // Columns are sortable
+  resizable: true,
+  sortable: true,
   width: 150,
   minWidth: 150,
 };
@@ -29,21 +29,27 @@ export const Grid = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { itemType } = useParams();
+  const navigate = useNavigate();
+
+  const handleRowDoubleClick = (event) => {
+    const rowData = event.data; // Fetch the row's data on double-click
+    navigate(`/${itemType}`, { state: { data: rowData } });
+  };
 
   const fetchData = async () => {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem("authToken");
     const fieldHeaderMap = config[itemType];
     const fieldNames = fieldHeaderMap.map((column) => column.field);
-    const selectQuery = `$select=${fieldNames.join(',')}`;
+    const selectQuery = `$select=${fieldNames.join(",")}`;
     const urlBase = `http://27.107.8.194:86//Aras28New/server/odata/${itemType}`;
     const url = `${urlBase}?${selectQuery}`;
 
     try {
       const response = await fetch(url, {
-        method: 'GET',
+        method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
 
@@ -104,11 +110,10 @@ export const Grid = () => {
             columnDefs={columnDefs}
             rowData={data}
             defaultColDef={defaultColDef}
-            rowSelection={rowSelection}
             domLayout="autoHeight"
+            onRowDoubleClicked={handleRowDoubleClick} // Add row double-click handler
             pagination={true}
             paginationPageSize={10}
-            paginationPageSizeSelector={[10, 25, 50]}
           />
         </div>
       </div>
