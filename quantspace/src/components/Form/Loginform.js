@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "./assets/image.png";
-import Logo from "./assets/logo.png";
+import Logo from "../../assets/qs1.png";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
@@ -125,17 +125,6 @@ if (showShimmer) {
             )}                
               </div>
 
-              <div className="login-center-options">
-                <div className="remember-div">
-                  <input type="checkbox" id="remember-checkbox" />
-                  <label htmlFor="remember-checkbox">
-                    Remember for 30 days
-                  </label>
-                </div>
-                <a href="#" className="forgot-pass-link">
-                  Forgot password?
-                </a>
-              </div>
               <div className="login-center-buttons">
                 <button type="button" onClick={handleLogin} disabled={loading}>Log In</button>
               </div>

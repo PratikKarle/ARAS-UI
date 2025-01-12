@@ -6,6 +6,11 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     height: 500px; 
   }
+
+  .grid-page{
+    margin-top: 40px;
+    padding: 20px;
+  }
   
   /* Ag-grid custom theme */
   .custom-grid .ag-header {

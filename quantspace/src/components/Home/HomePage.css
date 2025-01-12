@@ -26,6 +26,7 @@
 
 /* Content style */
 .content {
+  margin-top: 60px;
   padding: 20px;
 }
 
@@ -138,3 +139,27 @@
   background-color: #34495e;
 }
 
+/* Center button for specific card */
+.card-center-button .card-buttons {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin-top: auto; /* Push the button to the bottom */
+  opacity: 1; /* Ensure button is always visible */
+}
+
+.card-center-button .card-buttons button {
+  padding: 12px 24px; /* Adjust button size for emphasis */
+  font-size: 16px;
+  background-color: #3b566b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.card-center-button .card-buttons button:hover {
+  background-color: #34495e;
+  transform: scale(1.1); /* Slight enlarge on hover */
+}

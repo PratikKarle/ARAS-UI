@@ -30,8 +30,7 @@
   
   .accordion-header {
     padding: 10px;
-    background-color: #007bff;
-    color: white;
+    color: rgb(0, 0, 0);
     cursor: pointer;
     font-size: 1.25rem;
     font-weight: bold;
@@ -39,10 +38,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #009990;
   }
   
   .accordion-header:hover {
-    background-color: #0056b3;
+    background-color: #009990;
+    color: #f7f7f7;
   }
   
   /* Accordion content (collapsed when not active) */
@@ -53,7 +54,8 @@
   }
   
   .accordion.open .accordion-header {
-    background-color: #0056b3;
+    background-color: #009990;
+    color: #f7f7f7;
   }
   
   .accordion-toggle-button {
@@ -109,11 +111,11 @@
   }
   
   .submit-button {
-    background-color: #007bff;
+    background-color: #009990;
     color: white;
     border: none;
     padding: 10px 20px;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     cursor: pointer;
     border-radius: 6px;
   }

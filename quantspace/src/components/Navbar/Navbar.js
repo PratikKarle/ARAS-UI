@@ -1,19 +1,26 @@
-import {React, useState} from "react";
-import { Link } from "react-router-dom"; 
+import { React, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
-import logo from "../../assets/qs1.png"
+import logo from "../../assets/qs1.png";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-      
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    // Clear auth token from storage
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('username');
+
+    // Navigate to the login page
+    navigate('/');
+  }
+
   return (
     <header className="navbar">
-       <Link to="/home" className="logo">
-       <div style={{width: '30px'}}>
-       <img 
-          src={logo} 
-          alt="QuantSpace Logo" 
-          style={{ width: '30px', height: 'auto', display: 'inline-block' }} 
-        />
+      <Link to="/home" className="logo">
+        <div style={{ width: '30px' }}>
+          QuantSpace
         </div>
       </Link>
       <input
@@ -21,20 +28,24 @@ const Navbar = () => {
         className="large-search"
         placeholder="Search for projects, teams, or tasks..."
       />
-      <div className="profile-icon"><svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-    >
-        <circle cx="12" cy="8" r="4" />
-        <path d="M12 14c-4.418 0-8 2.686-8 6v2h16v-2c0-3.314-3.582-6-8-6z" />
-    </svg></div>
+      {/* Logout Icon */}
+      <div className="profile-icon" onClick={handleLogout}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M15 3H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-6" />
+          <polyline points="10 9 15 4 20 9" />
+          <line x1="15" y1="4" x2="15" y2="14" />
+        </svg>
+      </div>
     </header>
   );
 };

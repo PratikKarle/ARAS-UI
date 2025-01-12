@@ -6,8 +6,16 @@
     padding: 10px 20px;
     background-color: #009990; /* Slate Blue */
     color: white;
+    position: fixed; /* Keeps the navbar fixed at the top */
+    top: 0; /* Positions it at the top of the viewport */
+    left: 0; /* Aligns it to the left edge */
+    width: 100%; /* Full width of the page */
+    height: 60px; /* Fixed height */
+    z-index: 1000; /* Ensures it stays above other content */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for better visibility */
 }
 
+/* Logo styles */
 .navbar .logo {
     color: white; /* Default color */
     text-decoration: none;
@@ -17,24 +25,44 @@
 }
 
 .navbar .logo:hover {
-    color: #00bcd4; /* Cool Aqua on hover */
+    color: #2c2f33; /* Cool Aqua on hover */
 }
 
+/* Search bar styles */
 .navbar .large-search {
     padding: 10px;
     font-size: 1em;
     width: 50%;
     border: 1px solid #00bcd4; /* Aqua border */
+    border-radius: 5px; /* Rounded corners for better aesthetics */
     background-color: #f4f7fa; /* Light grey background */
+    color: #333; /* Text color */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
+.navbar .large-search:focus {
+    outline: none;
+    border-color: #009990; /* Highlighted border color */
+    box-shadow: 0 0 5px rgba(0, 153, 144, 0.5); /* Subtle glow effect */
+}
+
+/* Profile icon styles */
 .navbar .profile-icon {
     font-size: 1.8em;
     cursor: pointer;
-    color: #00bcd4; /* Aqua color for profile icon */
+    color: #ffffff; /* Aqua color for profile icon */
+    transition: color 0.3s ease;
+}
+
+.navbar .profile-icon:hover {
+    color: #ffffff; /* White on hover */
 }
 
 .navbar .profile-icon svg {
-    color: #3498db; /* Change to any color you prefer */
-  }
-  
+    color: #ffffff; /* Default color for SVG */
+    transition: color 0.3s ease;
+}
+
+.navbar .profile-icon:hover svg {
+    color: #2c2f33; /* Aqua color on hover */
+}

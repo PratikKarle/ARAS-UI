@@ -103,26 +103,6 @@ const EditForm = () => {
       ));
   };
 
-  const renderLifeCycleMap = () => {
-    if (!odataInfo || !["Life Cycle Map", "Part"].includes(itemType)) {
-      return null;
-    }
-    const lifeCycleItemId = itemType === "Part" ? "E337EBF706FA4172B2CD1A6487E00875" : odataInfo.itemId;
-    return (
-      <div className="lifecycle-map">
-        <h2>Life Cycle Map</h2>
-        <div className="state-section">
-          <LifeCycleMap
-            baseUrl="/Aras28New"
-            itemId={lifeCycleItemId}
-            expandState="Life Cycle State"
-            expandTransition="Life Cycle Transition"
-          />
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div>
       <Navbar />
@@ -132,9 +112,8 @@ const EditForm = () => {
         </div>
 
         <div className="form-body">
-          <div
-            className={`accordion ${openAccordion === "details" ? "open" : ""}`}
-          >
+          {/* Details Accordion */}
+          <div className={`accordion ${openAccordion === "details" ? "open" : ""}`}>
             <div
               className="accordion-header"
               onClick={() => handleAccordionToggle("details")}
@@ -155,12 +134,38 @@ const EditForm = () => {
             )}
           </div>
 
-          {renderLifeCycleMap()}
-	  {/* Conditionally render BOM if itemType is 'Part' */}
+          {/* Life Cycle Map Accordion */}
+          {["Part", "Life Cycle Map"].includes(itemType) && (
+            <div className={`accordion ${openAccordion === "lifecycle" ? "open" : ""}`}>
+              <div
+                className="accordion-header"
+                onClick={() => handleAccordionToggle("lifecycle")}
+              >
+                <h2>Life Cycle Map</h2>
+                <button className="accordion-toggle-button">
+                  {openAccordion === "lifecycle" ? "▲" : "▼"}
+                </button>
+              </div>
+              {openAccordion === "lifecycle" && (
+                <div className="accordion-content lifecycle-section">
+                  <LifeCycleMap
+                    baseUrl="/Aras28New"
+                    itemId={
+                      itemType === "Part"
+                        ? "E337EBF706FA4172B2CD1A6487E00875"
+                        : odataInfo?.itemId
+                    }
+                    expandState="Life Cycle State"
+                    expandTransition="Life Cycle Transition"
+                  />
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* BOM Accordion */}
           {itemType === "Part" && formData["@odata.id"] && (
-            <div
-              className={`accordion ${openAccordion === "bom" ? "open" : ""}`}
-            >
+            <div className={`accordion ${openAccordion === "bom" ? "open" : ""}`}>
               <div
                 className="accordion-header"
                 onClick={() => handleAccordionToggle("bom")}
@@ -172,12 +177,13 @@ const EditForm = () => {
               </div>
               {openAccordion === "bom" && (
                 <div className="accordion-content bom-section">
-                  <BOM partId={formData["@odata.id"]} itemType={"Part"} /> {/* Pass ID from formData to BOM */}
+                  <BOM partId={formData["@odata.id"]} itemType={"Part"} />
                 </div>
               )}
             </div>
           )}
 
+          {/* Submit Section */}
           <div className="submit-section">
             {!isEditable ? (
               <button

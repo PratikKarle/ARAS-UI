@@ -100,8 +100,9 @@ export const Grid = () => {
   }
 
   return (
+    <div>
+    <Navbar />
     <div className="grid-page">
-      <Navbar />
       <div className="grid-container">
         <h1>{itemType} Data</h1>
         <div className="ag-grid-wrapper">
@@ -114,9 +115,11 @@ export const Grid = () => {
             onRowDoubleClicked={handleRowDoubleClick} // Add row double-click handler
             pagination={true}
             paginationPageSize={10}
+            paginationPageSizeSelector={[10, 25, 50]}
           />
         </div>
       </div>
+    </div>
     </div>
   );
 };

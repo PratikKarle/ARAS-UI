@@ -78,6 +78,14 @@ const config = {
         { headerName: "Start Date", field: "start_date" },
         { headerName: "Status", field: "status" },
     ],
+    "Identity": [
+    ],
+    "cui_Dashboard": [
+    ],
+    "Project Template": [
+    ],
+    "xPropertyContainerItem": [
+    ],
   };
   
   export default config;

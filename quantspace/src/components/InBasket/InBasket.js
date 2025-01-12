@@ -24,7 +24,7 @@ export const InBasket = () => {
   const fetchData = async () => {
     const username = localStorage.getItem('username');
 
-    const url = `http://192.168.0.99:5258/api/login/login`;
+    const url = `http://localhost:5258/api/login/login`;
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -105,7 +105,7 @@ export const InBasket = () => {
           {selectedItem ? (
             <>
               <div className="details-header">
-                <h2>{selectedItem.Name || 'N/A'}</h2>
+                <h2>{'InBasket Task'}</h2>
               </div>
               <div className="details-content">
                 {Object.keys(selectedItem).map((key) => (

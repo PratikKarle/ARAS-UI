@@ -5,6 +5,8 @@ const BOM = ({ partId, itemtype }) => {
   const [dataSource, setDataSource] = useState([]);
   const [columns, setColumns] = useState([]);
   const [expandedRowKeys, setExpandedRowKeys] = useState([]);
+  const [isExpanded, setIsExpanded] = useState(false); // Track if rows are expanded or collapsed
+
   console.log("partId:::",partId);
   useEffect(() => {
     // Fetch data from the API using the provided ID
@@ -100,23 +102,23 @@ const BOM = ({ partId, itemtype }) => {
     return keys;
   };
 
-  const handleExpandAll = () => {
-    const allKeys = getAllKeys(dataSource);
-    setExpandedRowKeys(allKeys);
-  };
-
-  const handleCollapseAll = () => {
-    setExpandedRowKeys([]);
+  const handleToggleExpandCollapse = () => {
+    if (isExpanded) {
+      setExpandedRowKeys([]); // Collapse all rows
+    } else {
+      const allKeys = getAllKeys(dataSource); // Expand all rows
+      setExpandedRowKeys(allKeys);
+    }
+    setIsExpanded(!isExpanded); // Toggle the expand/collapse state
   };
 
   return (
     <div className="bom-container">
       <div className="button-container">
         <Space>
-          <Button type="primary" onClick={handleExpandAll}>
-            Expand All
+          <Button onClick={handleToggleExpandCollapse}>
+            {isExpanded ? 'Collapse All' : 'Expand All'}
           </Button>
-          <Button onClick={handleCollapseAll}>Collapse All</Button>
         </Space>
       </div>
       <Table
@@ -131,6 +133,7 @@ const BOM = ({ partId, itemtype }) => {
         rowClassName={(record, index) => (index % 2 === 0 ? 'even-row' : 'odd-row')}
         bordered
         size="small"
+        scroll={{ y: 400 }}  
       />
     </div>
   );
