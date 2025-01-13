@@ -1,14 +1,15 @@
-import React, { Suspense } from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import './index.css';
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import SplashScreen from "./components/Home/HomePage";
-import Login from "./components/Form/Loginform";
 import ShimmerUI from "./components/Shimmer";
-import Grid from "./components/GridView/GridView";
-import CreateForm from "./components/Form/CreateForm/CreateForm";
-import EditForm from "./components/Form/EditForm/EditForm";
-import InBasket from "./components/InBasket/InBasket";
+
+const Login = lazy(() => import('./components/Form/Loginform'));
+const CreateForm = lazy(() => import('./components/Form/CreateForm/CreateForm'));
+const EditForm = lazy(() => import('./components/Form/EditForm/EditForm'));
+const InBasket = lazy(() => import('./components/InBasket/InBasket'));
+const Grid = lazy(() => import('./components/GridView/GridView'));
 
 // Layout component to use Outlet
 function App() {
