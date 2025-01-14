@@ -107,8 +107,8 @@ if (showShimmer) {
             {errorMessage && (
               <p style={{ color: "red", marginBottom: "5px"}}>{errorMessage}</p>
             )}
-            <form>
-              <input type="email" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}
+            <form onSubmit={handleLogin}>
+              <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}
             required/>
               <div className="pass-input-div">
                 <input  type={showPassword ? "text" : "password"} placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>                
@@ -126,7 +126,11 @@ if (showShimmer) {
               </div>
 
               <div className="login-center-buttons">
-                <button type="button" onClick={handleLogin} disabled={loading}>Log In</button>
+                <button style={{
+                      padding: "12px",
+                      borderRadius: "25px",
+                      fontSize: "16px"
+                    }} type="submit" disabled={loading}>Log In</button>
               </div>
             </form>
           </div>
